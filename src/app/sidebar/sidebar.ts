@@ -27,7 +27,6 @@ export const GlobalStyle = createGlobalStyle`
     --primary-background: #0D0E12;
     --second-background: #343a40;
 
-    --primary-font-color: #fff;
 
     --shadow-black-color: rgba(0, 0, 0, 0.7);
 
