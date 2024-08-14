@@ -1,0 +1,49 @@
+ .feature {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #777e5c;
+    height: 400px;
+    padding: 20px;
+    position: relative;
+} 
+
+.featureSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    margin-left: 100px;
+
+}
+.featureSection h2 {
+    font-size: 1.5rem;
+    font-family: serif;
+    margin-bottom: 10px;
+    margin-left: 200px;
+}
+
+.featureSection span {
+    font-size: 4rem;
+    font-family: serif;
+    font-style: italic;
+    margin-bottom: 20px;
+    margin-left: 110px;
+}
+
+.featureSection p {
+    font-size: 3rem;
+    font-style: italic;
+    font-family: Segoe Script;
+    margin-left: 50px;
+}
+
+.featureImg {
+    width: 250px;
+    height: auto;
+    margin-right: 150px;
+    margin-top: 0px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
