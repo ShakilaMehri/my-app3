@@ -1,0 +1,42 @@
+.footer {
+    background-color: #283106;
+    color: #c7c2ab;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footerLogo {
+    margin-top: 30px;
+}
+
+
+.footerLogo h2 {
+    font-family: serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.footerContact {
+    margin: 10px 0;
+    font-size: 0.9rem;
+}
+
+.footerBottom {
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.footerBottom p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
