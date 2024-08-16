@@ -1,0 +1,79 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.fetchCatBtn {
+    background-color: #283106; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.fetchCatBtn:hover {
+    background-color: #777e5c;
+}
+
+.catFact {
+    font-size: 18px;
+    margin: 20px 0;
+    color: #333;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+.nameResult {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputAge {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    color: black;
+}
+
+.btnAge {
+    background-color: #283106; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btnAge:hover {
+    background-color: #777e5c;
+}
+
+.ageTitle {
+    font-size: 24px;
+    color: #333;
+    margin: 20px 0;
+}
