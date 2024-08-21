@@ -1,0 +1,12 @@
+.shopSection {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.shopCol {
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 1;
+}

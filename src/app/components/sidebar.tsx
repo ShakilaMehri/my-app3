@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState} from "react";
 import {
   Container,
   Content,
@@ -18,7 +18,9 @@ import {
   LogOutIcon,
   UserIcon,
   Search,
+  ShoppingCartIcon,
 } from "lucide-react";
+
 
 export function SideBar() {
   const [sideBar, setSideBar] = useState(false);
@@ -62,6 +64,9 @@ export function SideBar() {
             <div>
               {/* Icones  */}
               <ul>
+                <a href="/cart" title="Cart">
+                  <ShoppingCartIcon />
+                </a>
                 <a href="/" title="Notification">
                   <BellIcon />
                 </a>
@@ -119,6 +124,10 @@ export function SideBar() {
               <div>
                 {/* Icones  */}
                 <ul>
+                  <a href="/cart" title="Cart">
+                    <ShoppingCartIcon />
+                    <p>Cart</p>
+                  </a>
                   <a href="/">
                     <BellIcon />
                     <p>Notification</p>

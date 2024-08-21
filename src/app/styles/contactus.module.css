@@ -1,0 +1,103 @@
+.container {
+    font-family: serif;
+    color: #333;
+}
+
+.contactFormSection {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 50px 20px;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    gap: 15px;
+}
+
+.contactForm input,
+.contactForm textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.contactForm textarea {
+    height: 100px;
+    resize: none;
+}
+
+.contactForm button {
+    padding: 10px;
+    background-color: #777e5c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsLetter {
+    width: 30%;
+    padding: 20px;
+    background-color: #c7c2ab;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.newsLetter h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.newsLetter p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.newsLetter input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.newsLetter button {
+    padding: 10px;
+    background-color: #283106;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    margin-top: 10px;
+}
+
+.contactInfoSection {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 50px 20px;
+}
+
+.contactInfo {
+    display: flex;
+    gap: 20px;
+}
+
+.contactInfoItem {
+    background-color: #e6f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.contactInfoItem h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.map iframe {
+    border-radius: 10px;
+}

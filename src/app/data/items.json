@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes1.jfif"
+    },
+    {
+      "id": 2,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes2.jfif"
+    },
+    {
+      "id": 3,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes3.jfif"
+    },
+    {
+      "id": 4,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes4.jfif"
+    },
+    {
+      "id": 5,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes5.jfif"
+    },
+    {
+      "id": 6,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes6.jfif"
+    },
+    {
+      "id": 7,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes7.jfif"
+    },
+    {
+      "id": 8,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes8.jfif"
+    },
+    {
+      "id": 9,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes9.jfif"
+    },
+    {
+      "id": 10,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes10.jfif"
+    },
+    {
+      "id": 11,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes11.jfif"
+    },
+    {
+      "id": 12,
+      "name": "Mobile",
+      "price": 1000,
+      "imgUrl": "../../../images/Baby clothes12.jfif"
+    }
+  ]
+}

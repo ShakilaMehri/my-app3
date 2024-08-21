@@ -1,0 +1,40 @@
+.container {
+    align-items: center;
+    justify-content: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    min-width: 100%; 
+}
+
+.welcome {
+    background-color: #183206;
+    font-size: 2rem;
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.welcomeSection {
+    padding: 1.5rem;
+}
+
+.welcome svg {
+    color: white; 
+}
+
+.welcome svg:hover {
+    color: #ff0000; 
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        min-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
