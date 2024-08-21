@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import {
   Drawer,
@@ -34,10 +34,10 @@ const getItems = async (): Promise<CartItemType[]> => {
 const Shop = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as CartItemType[]);
-  const { isLoading, error, data } = useQuery<CartItemType[], Error>(
-    "items",
-    getItems
-  );
+  const { isLoading, error, data } = useQuery<CartItemType[], Error>({
+    queryKey: ['items'],
+    queryFn: getItems,
+});
   console.log(data);
 
   const getTotalItems = (items: CartItemType[]) =>
