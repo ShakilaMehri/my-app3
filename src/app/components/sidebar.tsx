@@ -21,13 +21,45 @@ import {
   ShoppingCartIcon,
 } from "lucide-react";
 
+import Cart from "../cart/page";
+import { CartItemType } from "../shop/shop";
 
-export function SideBar() {
+const  SideBar: React.FC =() => {
   const [sideBar, setSideBar] = useState(false);
+  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const addToCart = (clickedItem: CartItemType) =>{
+    setCartItems((prev) => {
+      const isItemInCart = prev.find((item) => item.id === clickedItem.id);
 
-  function handleChangeSideBar() {
-    setSideBar((prevState) => !prevState);
+      if (isItemInCart) {
+        return prev.map((item) =>
+          item.id === clickedItem.id
+            ? { ...item, amount: item.amount + 1 }
+            : item
+        );
+      }
+
+      return [...prev, { ...clickedItem, amount: 1 }];
+    });
+    }
+
+  const removeFromCart = (id: number) => {
+    setCartItems((prev) =>
+      prev.reduce((acc, item) => {
+        if (item.id === id) {
+          if (item.amount === 1) return acc;
+          return [...acc, { ...item, amount: item.amount - 1 }];
+        } else {
+          return [...acc, item];
+        }
+      }, [] as CartItemType[])
+    );
   }
+
+  const  handleChangeSideBar = ()=> {
+    setSideBar((prevState) => !prevState);
+  };
+  
   return (
     <Container>
       <Content>
@@ -146,6 +178,13 @@ export function SideBar() {
                   <p>users</p>
                 </span>
               </div>
+              <div>
+                <Cart
+                  cartItems= {cartItems}
+                  addToCart= {addToCart}
+                  removeFromCart ={removeFromCart}
+                />
+              </div>
             </section>
             <aside onClick={handleChangeSideBar} />
           </OpenSideBar>
@@ -154,3 +193,5 @@ export function SideBar() {
     </Container>
   );
 }
+
+export default SideBar;
