@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Baby Clothes",
+      "price": 1100,
+      "imgUrl": "/images/Baby clothes1.jfif"
+    },
+    {
+      "id": 2,
+      "name": "Baby Clothes",
+      "price": 1200,
+      "imgUrl": "/images/Baby clothes2.jfif"
+    },
+    {
+      "id": 3,
+      "name": "Baby Clothes",
+      "price": 1300,
+      "imgUrl": "/images/Baby clothes3.jfif"
+    },
+    {
+      "id": 4,
+      "name": "Baby Clothes",
+      "price": 1400,
+      "imgUrl": "/images/Baby clothes4.jfif"
+    },
+    {
+      "id": 5,
+      "name": "Baby Clothes",
+      "price": 1500,
+      "imgUrl": "/images/Baby clothes5.jfif"
+    },
+    {
+      "id": 6,
+      "name": "Baby Clothes",
+      "price": 1600,
+      "imgUrl": "/images/Baby clothes6.jfif"
+    },
+    {
+      "id": 7,
+      "name": "Baby Clothes",
+      "price": 1700,
+      "imgUrl": "/images/Baby clothes7.jfif"
+    },
+    {
+      "id": 8,
+      "name": "Baby Clothes",
+      "price": 1800,
+      "imgUrl": "/images/Baby clothes8.jfif"
+    },
+    {
+      "id": 9,
+      "name": "Baby Clothes",
+      "price": 1900,
+      "imgUrl": "/images/Baby clothes9.jfif"
+    },
+    {
+      "id": 10,
+      "name": "Baby Clothes",
+      "price": 2000,
+      "imgUrl": "/images/Baby clothes10.jfif"
+    },
+    {
+      "id": 11,
+      "name": "Baby Clothes",
+      "price": 2100,
+      "imgUrl": "/images/Baby clothes11.jfif"
+    },
+    {
+      "id": 12,
+      "name": "Baby Clothes",
+      "price": 2200,
+      "imgUrl": "/images/Baby clothes12.jfif"
+    }
+  ]
+}
