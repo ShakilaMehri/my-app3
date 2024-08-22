@@ -26,8 +26,13 @@ export type CartItemType = {
   amount: number;
 };
 
-const getItems = async (): Promise<CartItemType[]> => {
+const fetchItems = async () : Promise<CartItemType[]> => {
   const response = await axios.get("http://localhost:8000/items");
+  return response.data;
+};
+
+const updateItem = async (id : number, updatedItem : Partial<CartItemType>) : Promise<CartItemType> => {
+  const response = await axios.put(`http://localhost:8000/items${id}`, updatedItem);
   return response.data;
 };
 
@@ -36,7 +41,7 @@ const Shop = () => {
   const [cartItems, setCartItems] = useState([] as CartItemType[]);
   const { isLoading, error, data } = useQuery<CartItemType[], Error>({
     queryKey: ['items'],
-    queryFn: getItems,
+    queryFn: fetchItems,
 });
   console.log(data);
 
