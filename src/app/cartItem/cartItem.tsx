@@ -6,7 +6,7 @@ import { CartItemType } from "../shop/shop";
 import { Wrapper } from "../cart/cart.styles";
 
 type Props = {
-  item: CartItemType[];
+  item: CartItemType;
   addToCart: (clickedItem: CartItemType) => void;
   removeFromCart: (id: number) => void;
 };
