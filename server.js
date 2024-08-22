@@ -5,7 +5,6 @@ const path = require('path');
 const app = express();
 const PORT = 8000;
 
-// Endpoint to get all items
 app.get('/items', (req, res) => {
   const filePath = path.join(__dirname, 'items.json');
   
@@ -25,7 +24,6 @@ app.get('/items', (req, res) => {
   });
 });
 
-// Endpoint to get a specific item by ID
 app.get('/items/:id', (req, res) => {
   const filePath = path.join(__dirname, 'items.json');
   
