@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/header";
-import { SideBar } from "./components/sidebar";
+import  SideBar  from "./components/sidebar";
 import { GlobalStyle } from "./sidebar/sidebar";
 import MainSection from "./components/mainsection";
 import Category from "./components/category";
