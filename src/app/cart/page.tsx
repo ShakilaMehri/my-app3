@@ -5,18 +5,19 @@ import { CartItemType } from "../shop/shop";
 import { Wrapper } from "./cart.styles";
 
 type Props = {
-  cartItems: CartItemType[];
+  cartItems: CartItemType [];
   addToCart: (clickedItem: CartItemType) => void;
   removeFromCart: (id: number) => void;
 };
 
-const Cart: React.FC<Props>  = ({ cartItems, addToCart, removeFromCart}) => {
+
+const Cart: React.FC<Props>  = ({ cartItems = [] , addToCart, removeFromCart}) => {
   const calculateTotal = (items: CartItemType[]) =>
     items.reduce((acc: number, item) => acc + item.amount * item.price, 0);
   return(
     <Wrapper>
       <h2>shopping cart</h2>
-      {cartItems.length ? (
+      {cartItems.length > 0 ? (
         <div>
           {cartItems.map((item) =>(
             <CartItem
