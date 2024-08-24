@@ -38,7 +38,7 @@
     line-height: 1.3em;
 }
 .carousel .list .item .topic{
-    color: #f1683a;
+    color: #000;
 }
 .carousel .list .item .buttons{
     display: grid;
@@ -201,14 +201,13 @@
     }
 }
 
-/* running time */
 
 .carousel .time{
     position: absolute;
     z-index: 1000;
     width: 0%;
     height: 3px;
-    background-color: #f1683a;
+    background-color: #283106;
     left: 0;
     top: 0;
 }
@@ -222,8 +221,6 @@
     to{width: 0}
 }
 
-
-/* prev click */
 
 .carousel.prev .list .item:nth-child(2){
     z-index: 2;
