@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from "react";
 import sliderData from '../data/sliderItem.json';
 import styles from "../styles/slider.module.css";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface SliderItem {
     imgSrc: string;
@@ -12,7 +13,7 @@ interface SliderItem {
 }
 
 const Slider: React.FC = () => {
-    const sliderItems: SliderItem[] = sliderData.sliderItems;
+    const sliderItems: SliderItem[] = sliderData.sliderItems || [];
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [timeOutId, setTimeOutId] = useState<NodeJS.Timeout | null>(null);
     const [autoNextTimeOutId, setAutoNextTimeOutId] = useState<NodeJS.Timeout | null>(null);
@@ -24,7 +25,7 @@ const Slider: React.FC = () => {
     };
 
     const prev = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1+ sliderItems.length) % sliderItems.lwngth);
+        setCurrentIndex((prevIndex) => (prevIndex - 1+ sliderItems.length) % sliderItems.length);
     };
 
     const resetTimeouts = () => {
@@ -78,8 +79,8 @@ const Slider: React.FC = () => {
         </div>
 
       <div className={styles.arrows}>
-        <button className={styles.prev} onClick={prev}>icon</button>
-        <button className={styles.next} onClick={next}>icon</button>
+        <button className={styles.prev} onClick={prev}><ArrowLeft/></button>
+        <button className={styles.next} onClick={next}><ArrowRight/></button>
       </div>
 
       <div className={styles.time}></div>
