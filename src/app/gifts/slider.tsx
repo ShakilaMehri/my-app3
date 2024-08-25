@@ -16,8 +16,6 @@ interface SliderItemData {
 const Slider: React.FC = () => {
     const sliderItems: SliderItemData[] = sliderData.sliderItems || [];
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [autoNextTimeOutId, setAutoNextTimeOutId] = useState<NodeJS.Timeout | null>(null);
-
     const timeAutoNext = 7000;
 
     const next = () => {
@@ -28,38 +26,37 @@ const Slider: React.FC = () => {
         setCurrentIndex((prevIndex) => (prevIndex - 1+ sliderItems.length) % sliderItems.length);
     };
 
-    const resetTimeouts = () => {
-        if (autoNextTimeOutId) clearTimeout(autoNextTimeOutId);
-    };
-
     useEffect(() => {
-        resetTimeouts();
-
     const newAutoNextTimeOutId = setTimeout(next, timeAutoNext);
-    setAutoNextTimeOutId(newAutoNextTimeOutId);
-
-    return () => resetTimeouts();
+    return () => clearTimeout(newAutoNextTimeOutId);
     }, [currentIndex]);
 
     return (
-    <div className={styles.carousel} >
-      <div className={styles.list} >
-        {sliderItems.length > 0 ? (
-      sliderItems.map((item, index) =>(
-                <div 
-                key={index}
-                imgSrc={item.imgSrc}
-                author={item.author}
-                title={item.title}
-                topic={item.topic}
-                description={item.description}
-                isActive={index === currentIndex}
-            />
-      ))
-        ) : (
-            <p>No sliderItem available</p>
-)}
-        </div>
+      <div className={styles.carousel}>
+      <div className={styles.list}>
+          {sliderItems.length > 0 ? (
+              sliderItems.map((item, index) => (
+                  <div
+                      key={item.id}
+                      className={`${styles.item} ${index === currentIndex ? styles.active : ""}`}
+                  >
+                      <img src={item.imgSrc} alt={`Slide ${index + 1}`} />
+                      <div className={styles.content}>
+                          <div className={styles.author}>{item.author}</div>
+                          <div className={styles.title}>{item.title}</div>
+                          <div className={styles.topic}>{item.topic}</div>
+                          <div className={styles.description}>{item.description}</div>
+                          <div className={styles.buttons}>
+                              <button>SEE MORE</button>
+                              <button>SUBSCRIBE</button>
+                          </div>
+                      </div>
+                  </div>
+              ))
+          ) : (
+              <p>No slider items available</p>
+          )}
+      </div>
 
       <div className={styles.thumbnail}>
         {sliderItems.map((item) =>(
