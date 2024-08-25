@@ -5,6 +5,7 @@ import styles from "../styles/slider.module.css";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface SliderItem {
+    id: number;
     imgSrc: string;
     author: string;
     title: string;
@@ -48,7 +49,7 @@ const Slider: React.FC = () => {
         {sliderItems.length > 0 ? (
       sliderItems.map((item, index) =>(
                 <div 
-                key={item.id}
+                key={index}
                 className={`${styles.item} ${index === currentIndex ? styles.active : ""}`}>
           <img src={item.imgSrc} alt={`Slide ${index + 1}`} />
           <div className={styles.content}>
@@ -64,7 +65,7 @@ const Slider: React.FC = () => {
         </div>
     ))
         ) : (
-            <p>No sliderItem available</p>
+            <p>No sliderItem availa</p>
 )}
         </div>
 
