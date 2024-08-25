@@ -1,10 +1,10 @@
 "use client"
 import React, {useState, useEffect} from "react";
-import sliderData from '../data/sliderItem.json';
+import sliderData from '../data/sliderItems.json';
 import styles from "../styles/slider.module.css";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-interface SliderItem {
+interface SliderItemData {
     id: number;
     imgSrc: string;
     author: string;
@@ -14,11 +14,10 @@ interface SliderItem {
 }
 
 const Slider: React.FC = () => {
-    const sliderItems: SliderItem[] = sliderData.sliderItems || [];
+    const sliderItems: SliderItemData[] = sliderData.sliderItems || [];
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [timeOutId, setTimeOutId] = useState<NodeJS.Timeout | null>(null);
     const [autoNextTimeOutId, setAutoNextTimeOutId] = useState<NodeJS.Timeout | null>(null);
-    const timeRunning= 3000;
+
     const timeAutoNext = 7000;
 
     const next = () => {
@@ -30,7 +29,6 @@ const Slider: React.FC = () => {
     };
 
     const resetTimeouts = () => {
-        if (timeOutId )clearTimeout(timeOutId);
         if (autoNextTimeOutId) clearTimeout(autoNextTimeOutId);
     };
 
@@ -50,22 +48,16 @@ const Slider: React.FC = () => {
       sliderItems.map((item, index) =>(
                 <div 
                 key={index}
-                className={`${styles.item} ${index === currentIndex ? styles.active : ""}`}>
-          <img src={item.imgSrc} alt={`Slide ${index + 1}`} />
-          <div className={styles.content}>
-            <div className={styles.author}>{item.author}</div>
-            <div className={styles.title}>{item.title}</div>
-            <div className={styles.topic}>{item.topic}</div>
-            <div className={styles.sliderDes}>{item.description}</div>
-            <div className={styles.buttons}>
-              <button>SEE MORE</button>
-              <button>SUBSCRIBE</button>
-            </div>
-        </div>
-        </div>
-    ))
+                imgSrc={item.imgSrc}
+                author={item.author}
+                title={item.title}
+                topic={item.topic}
+                description={item.description}
+                isActive={index === currentIndex}
+            />
+      ))
         ) : (
-            <p>No sliderItem availa</p>
+            <p>No sliderItem available</p>
 )}
         </div>
 
