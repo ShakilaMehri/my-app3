@@ -6,7 +6,7 @@
         "title": "DESIGN SLIDER",
         "topic": "Baby",
         "deacription": "Lorem ipsum dolor, sit amet consectetur adipisicing elit... ",
-        "imgSrc": "../../../images/gift1.jfif"
+        "imgSrc": "/images/gift1.jfif"
       },
       {
         "id": 2,
@@ -14,7 +14,7 @@
         "title": "DESIGN SLIDER",
         "topic": "Baby",
         "deacription": "Lorem ipsum dolor, sit amet consectetur adipisicing elit... ",
-        "imgSrc": "../../../images/gifts2.jpg"
+        "imgSrc": "/images/gifts2.jpg"
       },
       {
         "id": 3,
@@ -22,7 +22,7 @@
         "title": "DESIGN SLIDER",
         "topic": "Baby",
         "deacription": "Lorem ipsum dolor, sit amet consectetur adipisicing elit... ",
-        "imgSrc": "../../../images/gifts3.jpg"
+        "imgSrc": "/images/gifts3.jpg"
       },
       {
         "id": 4,
@@ -30,7 +30,7 @@
         "title": "DESIGN SLIDER",
         "topic": "Baby",
         "deacription": "Lorem ipsum dolor, sit amet consectetur adipisicing elit... ",
-        "imgSrc": "../../../images/gifts4.jpg"
+        "imgSrc": "/images/gifts4.jpg"
       }
     ]
   }
