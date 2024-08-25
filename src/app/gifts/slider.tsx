@@ -45,12 +45,11 @@ const Slider: React.FC = () => {
     return (
     <div className={styles.carousel} >
       <div className={styles.list} >
-      {sliderItems.map((item, index) =>(
+        {sliderItems.length > 0 ? (
+      sliderItems.map((item, index) =>(
                 <div 
                 key={item.id}
-                className={`${styles.item} ${index === currentIndex ? styles.active : ""}`}
-                >
-        
+                className={`${styles.item} ${index === currentIndex ? styles.active : ""}`}>
           <img src={item.imgSrc} alt={`Slide ${index + 1}`} />
           <div className={styles.content}>
             <div className={styles.author}>{item.author}</div>
@@ -63,7 +62,10 @@ const Slider: React.FC = () => {
             </div>
         </div>
         </div>
-    ))}
+    ))
+        ) : (
+            <p>No sliderItem available</p>
+)}
         </div>
 
       <div className={styles.thumbnail}>
