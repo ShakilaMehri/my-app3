@@ -1,4 +1,5 @@
 import React from 'react';
+import sliderItem from '../data/sliderItems.json'
 import styles from '../styles/slider.module.css';
 
 interface SliderItemProps  {
