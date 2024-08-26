@@ -11,7 +11,7 @@ const Feature = () => {
       <p>To celebrate a special moment</p>
       </div>
       <div className={styles.featureImg}>
-      <img src="../../../images/bascket.jfif" alt="gifts" />
+      <img src="/images/bascket.jfif" alt="gifts" />
       </div>
     </section>
   );

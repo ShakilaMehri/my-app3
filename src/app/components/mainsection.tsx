@@ -11,7 +11,7 @@ const MainSection = () => {
         </div>
         <button className={styles.mainBtn}>Shop Now</button>
         <div className={styles.mainImg}>
-            <img src="../../../images/download (5).jfif" alt="baby dress" />
+            <img src="/images/download (5).jfif" alt="baby dress" />
         </div>
     </section>
   );

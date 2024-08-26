@@ -80,16 +80,16 @@ const  SideBar: React.FC =() => {
               {/* Links */}
               <ul>
                 <a href="/" title="github">
-                  <img src="../../../../images/icons8-github-24.png" />
+                  <img src="/images/icons8-github-24.png" />
                 </a>
                 <a href="/" title="telegram">
-                  <img src="../../../../images/icons8-telegram-24.png" />
+                  <img src="/images/icons8-telegram-24.png" />
                 </a>
                 <a href="/" title="twitter">
-                  <img src="../../../../images/icons8-twitter-24.png" />
+                  <img src="/images/icons8-twitter-24.png" />
                 </a>
                 <a href="/" title="linkedin">
-                  <img src="../../../../images/icons8-linkedin-24.png" />
+                  <img src="/images/icons8-linkedin-24.png" />
                 </a>
               </ul>
             </nav>
