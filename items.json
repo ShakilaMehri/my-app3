@@ -71,6 +71,24 @@
       "name": "Baby Clothes",
       "price": 2200,
       "imgUrl": "/images/Baby clothes12.jfif"
+    },
+    {
+      "id": 13,
+      "name": "Baby Clothes",
+      "price": 2300,
+      "imgUrl": "/images/Baby clothes13.jfif"
+    },
+    {
+      "id": 14,
+      "name": "Baby Clothes",
+      "price": 2400,
+      "imgUrl": "/images/Baby clothes14.jfif"
+    },
+    {
+      "id": 15,
+      "name": "Baby Clothes",
+      "price": 2500,
+      "imgUrl": "/images/Baby clothes 15.jfif"
     }
   ]
 }
