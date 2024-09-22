@@ -24,7 +24,7 @@
     transform: translateX(-50%);
     padding-right: 30%;
     box-sizing: border-box;
-    color: #fff;
+    color: #777c5c;
     text-shadow: 0 5px 10px #0004;
 }
 .carousel .list .item .author{
@@ -38,7 +38,7 @@
     line-height: 1.3em;
 }
 .carousel .list .item .topic{
-    color: #000;
+    color: #f1683a;
 }
 .carousel .list .item .buttons{
     display: grid;
@@ -49,15 +49,22 @@
 }
 .carousel .list .item .buttons button{
     border: none;
-    background-color: #eee;
+    background-color: #283106;
     letter-spacing: 3px;
-    font-family: Poppins;
     font-weight: 500;
 }
 .carousel .list .item .buttons button:nth-child(2){
     background-color: transparent;
     border: 1px solid #fff;
-    color: #eee;
+    color: #283106;
+}
+
+.item {
+    display: none;
+}
+
+.item.active {
+    display: block;
 }
 
 .thumbnail{
@@ -98,7 +105,7 @@
 .arrows{
     position: absolute;
     top: 80%;
-    right: 52%;
+    right: 55%;
     z-index: 100;
     width: 300px;
     max-width: 30%;
@@ -110,10 +117,9 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #eee4;
+    background-color: #283106;
     border: none;
     color: #fff;
-    font-family: monospace;
     font-weight: bold;
     transition: .5s;
 }
@@ -122,11 +128,9 @@
     color: #000;
 }
 
-
 .carousel .list .item:nth-child(1){
     z-index: 1;
 }
-
 
 .carousel .list .item:nth-child(1) .content .author,
 .carousel .list .item:nth-child(1) .content .title,
@@ -147,18 +151,17 @@
     }
 }
 .carousel .list .item:nth-child(1) .content .title{
-    animation-delay: 1.2s!important;
+    animation-delay: 1.2s;
 }
 .carousel .list .item:nth-child(1) .content .topic{
-    animation-delay: 1.4s!important;
+    animation-delay: 1.4s;
 }
 .carousel .list .item:nth-child(1) .content .des{
-    animation-delay: 1.6s!important;
+    animation-delay: 1.6s;
 }
 .carousel .list .item:nth-child(1) .content .buttons{
-    animation-delay: 1.8s!important;
+    animation-delay: 1.8s;
 }
-
 .carousel.next .list .item:nth-child(1) img{
     width: 150px;
     height: 220px;
@@ -207,7 +210,7 @@
     z-index: 1000;
     width: 0%;
     height: 3px;
-    background-color: #283106;
+    background-color: #f1683a;
     left: 0;
     top: 0;
 }
@@ -220,7 +223,6 @@
     from{ width: 100%}
     to{width: 0}
 }
-
 
 .carousel.prev .list .item:nth-child(2){
     z-index: 2;
@@ -257,7 +259,7 @@
 .carousel.prev .list .item:nth-child(2) .content .des,
 .carousel.prev .list .item:nth-child(2) .content .buttons
 {
-    animation: contentOut 1.5s linear 1 forwards!important;
+    animation: contentOut 1.5s linear 1 forwards;
 }
 
 @keyframes contentOut{
