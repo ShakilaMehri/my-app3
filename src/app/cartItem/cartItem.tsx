@@ -3,7 +3,7 @@ import React from "react";
 import { PlusCircle, MinusCircle } from "lucide-react";
 import { Button } from "@chakra-ui/react";
 import { CartItemType } from "../shop/shop";
-import { Wrapper } from "../cart/cart.styles";
+import styles from "./cartItem.module.css";
 
 type Props = {
   item: CartItemType;
@@ -12,8 +12,8 @@ type Props = {
 };
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
-  <Wrapper>
-    <div className="image">
+  <div className={styles.wrapper}>
+    <div className={styles.image}>
         <img 
         src={item.imgUrl} 
         alt={item.name} 
@@ -23,23 +23,29 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
         }} 
       />
     </div>
-    <div className="content">
+    <div className={styles.content}>
       <h3>{item.name}</h3>
-      <div className="information">
+      <div className={styles.information}>
         <p>Price: ${item.price}</p>
         <p>Total: ${(item.amount * item.price).toFixed(2)}</p>
       </div>
-      <div className="buttons">
-        <Button onClick={() => removeFromCart(item.id)}>
+      <div className={styles.buttons}>
+        <Button onClick={() => {
+          console.log('Removing from cart:', item.id);
+          removeFromCart(item.id)
+        }}>
           <MinusCircle />
         </Button>
         <p>{item.amount}</p>
-        <Button onClick={() => addToCart(item)}>
+        <Button onClick={() => {
+          console.log('Adding to cart:', item);
+          addToCart(item);
+        }}>
           <PlusCircle />
         </Button>
       </div>
     </div>
-  </Wrapper>
+  </div>
 );
 
 export default CartItem;

@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.image img {
+  max-width: 80px;
+  object-fit: cover;
+}
+
+.content {
+    flex: 2;
+    padding-right: 10px;
+  }
+
+.information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons button svg {
+  width: 24px;
+  height: 24px;
+  color: #0070f3;
+}
+
+.buttons button:hover svg {
+  color: #0056b3;
+}
