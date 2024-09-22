@@ -36,7 +36,7 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       console.log("Loaded cart items from localStorage:", storedCartItems); 
       setCartItems(storedCartItems ? JSON.parse(storedCartItems) : []);
     }
-  }, []);
+  }, [cartItems]);
 
   const addToCart = (item: CartItemType) => {
     setCartItems((prev) => {
