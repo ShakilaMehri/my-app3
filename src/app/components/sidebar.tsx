@@ -63,7 +63,7 @@ const SideBar: React.FC<SideBarProps> = () => {
     console.log("Cart items updated:", cartItems);
     console.log("Total items updated:", getTotalItems);
   }, [cartItems, getTotalItems]);
-  
+
   if (!mounted) return null;
 
   return (
@@ -104,7 +104,7 @@ const SideBar: React.FC<SideBarProps> = () => {
               {/* Icones  */}
               <ul>
                 <Link href="/cart">
-                  <div style={{ position: "relative" }}>
+                  <div>
                     <ShoppingCartIcon />
                     {getTotalItems > 0 && 
                       <CartBadge>{getTotalItems}</CartBadge>
@@ -169,7 +169,7 @@ const SideBar: React.FC<SideBarProps> = () => {
                 {/* Icones  */}
                 <ul>
                 <Link href="/cart">
-                  <div style={{ position: "relative" }}>
+                  <div>
                     <ShoppingCartIcon />
                     {getTotalItems > 0 && 
                       <CartBadge>{getTotalItems}</CartBadge>
