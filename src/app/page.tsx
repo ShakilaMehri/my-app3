@@ -13,8 +13,8 @@ export default function Home() {
   return (
    <main>
     <TopNavBar/>
-    <GlobalStyle/>
     <SideBar/>
+    <GlobalStyle/>
     <Header/>
     <MainSection/>
     <Category/>
