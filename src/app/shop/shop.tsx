@@ -1,65 +1,65 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import {
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  Spinner,
-  Grid,
-  Badge,
-  Box,
-} from "@chakra-ui/react";
-import { ShoppingCart } from "lucide-react";
+import {Grid, Spinner} from "@chakra-ui/react";
 import Item from "../item/item";
-import Cart from "../cart/page";
-import { Wrapper, StyledButton } from "./shop.styles";
+import { Wrapper} from "./shop.styles";
+import SideBar from "../components/sidebar";
+import { GlobalStyle } from "../sidebar/sidebar";
 
 export type CartItemType = {
   id: number;
   name: string;
   price: number;
-  imgUrl: string;
+  imgUrl?: string;
   amount: number;
 };
 
-const fetchItems = async () : Promise<CartItemType[]> => {
-  const response = await axios.get("http://localhost:8000/items");
-  return response.data;
-};
+interface CartProps {
+  cartItems: CartItemType[];
+  setCartItems: React.Dispatch<React.SetStateAction<CartItemType[]>>;
+}
 
-const updateItem = async (id : number, updatedItem : Partial<CartItemType>) : Promise<CartItemType> => {
-  const response = await axios.put(`http://localhost:8000/items${id}`, updatedItem);
-  return response.data;
+const fetchItems = async (): Promise<CartItemType[]> => {
+  try {
+    const response = await axios.get("http://localhost:8000/items");
+    const data = response.data;
+    if (data && Array.isArray(data.items)) {
+      console.log("API response:", response.data);
+      return data.items;
+    } else {
+      console.error("invalid API response:", data);
+      return [];
+    }
+  } catch (error) {
+    console.error("Failed to fetch items:", error);
+    return[];
+  }
 };
 
 const Shop = () => {
-  const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([] as CartItemType[]);
-  const { isLoading, error, data } = useQuery<CartItemType[], Error>({
-    queryKey: ['items'],
+  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const { isLoading, error, data: itemsData } = useQuery<CartItemType[], Error>({
+    queryKey: ["items"],
     queryFn: fetchItems,
-});
-  console.log(data);
+    initialData: [],
+  });
 
-  const getTotalItems = (items: CartItemType[]) =>
-    items.reduce((acc, item) => acc + item.amount, 0);
+  useEffect(() => {
+    console.log("Cart Items have been updated:", cartItems);
+  }, [cartItems]);
 
   const handleAddToCart = (clickedItem: CartItemType) => {
     setCartItems((prev) => {
       const isItemInCart = prev.find((item) => item.id === clickedItem.id);
-
-      if (isItemInCart) {
+      if (isItemInCart) {      
         return prev.map((item) =>
           item.id === clickedItem.id
             ? { ...item, amount: item.amount + 1 }
             : item
         );
       }
-
       return [...prev, { ...clickedItem, amount: 1 }];
     });
   };
@@ -76,52 +76,29 @@ const Shop = () => {
       }, [] as CartItemType[])
     );
   };
-
+  
   if (isLoading) return <Spinner />;
   if (error) return <div>An error has occurred: {error.message}</div>;
 
   return (
+    <div>
+      <SideBar cartItems={cartItems}/>
+      <GlobalStyle/>
     <Wrapper>
-      <Drawer
-        placement="right"
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader>Your Shopping Cart</DrawerHeader>
-          <DrawerBody>
-            <Cart
-              cartItems={cartItems}
-              addToCart={handleAddToCart}
-              removeFromCart={handleRemoveFromCart}
-            />
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-      <StyledButton onClick={() => setCartOpen(true)}>
-        <Box position="relative" display="inline-block">
-          <ShoppingCart size={24} />
-          {getTotalItems(cartItems) > 0 && (
-            <Badge
-              position="absolute"
-              top="-10px"
-              right="-10px"
-              borderRadius="full"
-              px={2}
-              colorScheme="red"
-            >
-              {getTotalItems(cartItems)}
-            </Badge>
-          )}
-        </Box>
-      </StyledButton>
       <Grid templateColumns="repeat(auto-fit, minmax(240px, 1fr))" gap={6}>
-        {data?.map((item) => (
-          <Item key={item.id} item={item} handleAddToCart={handleAddToCart} />
-        ))}
+          {Array.isArray(itemsData) &&
+            itemsData.map((item) => (
+              <Item
+                key={item.id}
+                item={item}
+                cartItems={cartItems}
+                handleAddToCart={handleAddToCart}
+                handleRemoveFromCart={handleRemoveFromCart}
+              />
+            ))}
       </Grid>
     </Wrapper>
+    </div>
   );
 };
 
