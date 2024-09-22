@@ -1,0 +1,46 @@
+.wrapper {
+  padding: 20px;
+  margin-left: 50px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cartItemsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.totalPrice {
+  font-size: 22px;
+  margin-top: 20px;
+  color: #333;
+}
+
+.checkoutLInkButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+.checkoutLInkButton:hover {
+  background-color: #45a049;
+  }
+
+
+.emptyCartMessage {
+  font-size: 18px;
+  color: #666;
+}
+
