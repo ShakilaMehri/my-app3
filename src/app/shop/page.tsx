@@ -1,9 +1,7 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/header";
 import Welcome from "../components/welcome";
-import SideBar from "../components/sidebar";
-import { GlobalStyle } from "../sidebar/sidebar";
 import Footer from "../components/footer";
 import Shop from "./shop";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -11,15 +9,14 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 const Page = () => {
+  const [cartItems, setCartItems] = useState([]);
   return (
     <>
       <Header />
       <Welcome />
-      <SideBar />
       <QueryClientProvider client={queryClient}>
-            <Shop/>
+            <Shop cartItems={cartItems} setCartItems={setCartItems}/>
         </QueryClientProvider>
-      <GlobalStyle />
       <Footer />
     </>
   );

@@ -1,40 +1,17 @@
-"use client";
-import React from "react";
-import CartItem from "../cartItem/cartItem";
-import { CartItemType } from "../shop/shop";
-import { Wrapper } from "./cart.styles";
+import React, {useContext} from "react";
+import Cart from "./cart";
+import SideBar from "../components/sidebar";
+import { GlobalStyle } from "../sidebar/sidebar";
+import { CartProvider} from "../context/cartContext";
 
-type Props = {
-  cartItems: CartItemType [];
-  addToCart: (clickedItem: CartItemType) => void;
-  removeFromCart: (id: number) => void;
-};
-
-
-const Cart: React.FC<Props>  = ({ cartItems = [] , addToCart, removeFromCart}) => {
-  const calculateTotal = (items: CartItemType[]) =>
-    items.reduce((acc: number, item) => acc + item.amount * item.price, 0);
-  return(
-    <Wrapper>
-      <h2>shopping cart</h2>
-      {cartItems.length > 0 ? (
-        <div>
-          {cartItems.map((item) =>(
-            <CartItem
-            key={item.id}
-            item={item}
-            addToCart={addToCart}
-            removeFromCart={removeFromCart}
-              />
-          ))}
-          </div>
-      ) : (
-        <div>No items in cart</div>
-      )}
-      <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
-    </Wrapper>
+const Page = () => {
+  return (
+    <CartProvider>
+      <SideBar />
+      <GlobalStyle />
+      <Cart/>
+    </CartProvider>
   );
 };
 
-
-export default Cart;
+export default Page;
