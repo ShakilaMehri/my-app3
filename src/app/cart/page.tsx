@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import Cart from "./cart";
 import SideBar from "../components/sidebar";
 import { GlobalStyle } from "../sidebar/sidebar";
