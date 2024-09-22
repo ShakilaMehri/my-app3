@@ -60,14 +60,29 @@ export const SearchIcon = styled.div`
 	
 `;
 
+export const CartBadge = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  background-color: #777e5c;
+  color: white;
+  border-radius: 50%;
+  padding: 1px 2px;
+  font-size: 10px;
+  max-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
 export const ClosedSideBar = styled.header`
   max-width: 60px;
   width: 100%;
   height: 100%;
   border-radius: 0 12px 12px 0;
-
   background: var(--second-background);
-
   position: fixed;
   left: 0;
   top: 0;
@@ -77,6 +92,7 @@ export const ClosedSideBar = styled.header`
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+
 
   svg {
     color: #f9f9f9;
@@ -92,7 +108,23 @@ export const ClosedSideBar = styled.header`
     align-items: center;
     flex-direction: column;
     width: 100%;
-	margin-top: 20px;
+	  margin-top: 20px;
+
+    nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content; center;
+    }
+
+    nav ul li {
+    margin: 10px 0;
+    }
+
+    nav ul li svg {
+    width: 24px;
+    height: 24px;    
+    }
 
     > button {
       width: 100%;
@@ -110,7 +142,6 @@ export const ClosedSideBar = styled.header`
     > button svg {
       width: 24px;
       height: 24px;
-
       color: #c4c4c4;
     }
 
@@ -165,7 +196,7 @@ export const ClosedSideBar = styled.header`
       align-items: center;
       flex-direction: column;
 
-      a {
+      button {
         padding: 16px 0;
         width: 100%;
         display: flex;
@@ -212,7 +243,7 @@ export const OpenSideBar = styled.header`
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 100;
+  z-index: 900;
   background: var(--shadow-black-color);
 
   display: flex;
@@ -244,7 +275,7 @@ export const OpenSideBar = styled.header`
       align-items: center;
       flex-direction: column;
       width: 100%;
-	  margin-top: 20px;
+	  margin-top: 35px;
 
 
       > span {
@@ -254,7 +285,7 @@ export const OpenSideBar = styled.header`
 
         button {
           cursor: pointer;
-          padding: 18px;
+          padding: 10px;
 
           &:hover {
             svg path {
@@ -290,7 +321,7 @@ export const OpenSideBar = styled.header`
       }
 
       ul {
-        margin-top: 64px;
+        margin-top: 10px;
         width: 100%;
         text-align: left;
         display: flex;
@@ -335,14 +366,17 @@ export const OpenSideBar = styled.header`
         display: flex;
         flex-direction: column;
 
-        a {
+        button {
           padding: 16px 20px;
           display: flex;
           align-items: center;
           gap: 16px;
-
-          transition: color 0.3s;
+          transition: background 0.3s;
           &:hover {
+          background: var(--shadow-black-color);
+          svg path {
+          color: var(--third-color);
+          }
           }
           svg {
             width: 20px;

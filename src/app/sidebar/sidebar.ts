@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --primary-color: #D1107A;
+    --primary-color: #777e5c;
     --third-color: #777e5c;
 
     --primary-background: #0D0E12;
