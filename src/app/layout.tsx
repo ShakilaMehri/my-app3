@@ -1,6 +1,8 @@
+import React from "react";
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import "./globals.css";
+import { CartProvider } from "./context/cartContext";
 
 const vazirFont = localFont({src: "../../public/font/Vazirmatn-Regular.woff2" });
 
@@ -11,12 +13,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={vazirFont.className}>{children}</body>
+      <body className={vazirFont.className}>
+        <CartProvider>{children}</CartProvider>
+        </body>
     </html>
   );
 }
+
+
