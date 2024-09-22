@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState} from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   Container,
   Content,
@@ -9,6 +9,7 @@ import {
   SearchInput,
   SearchWrapper,
   SearchIcon,
+  CartBadge,
 } from "../sidebar/stiles";
 import {
   BellIcon,
@@ -21,52 +22,58 @@ import {
   ShoppingCartIcon,
 } from "lucide-react";
 
-import Cart from "../cart/page";
+import { useCart } from "../context/cartContext";
+import Cart from "../cart/cart";
 import { CartItemType } from "../shop/shop";
+import Link from "next/link";
 
-const  SideBar: React.FC =() => {
+interface SideBarProps {
+  cartItems?: CartItemType[];
+}
+
+const SideBar: React.FC<SideBarProps> = () => {
   const [sideBar, setSideBar] = useState(false);
-  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
-  const addToCart = (clickedItem: CartItemType) =>{
-    setCartItems((prev) => {
-      const isItemInCart = prev.find((item) => item.id === clickedItem.id);
+  const [cartVisible, setCartVisible] = useState(false);
 
-      if (isItemInCart) {
-        return prev.map((item) =>
-          item.id === clickedItem.id
-            ? { ...item, amount: item.amount + 1 }
-            : item
-        );
-      }
+  const { cartItems, addToCart, removeFromCart } = useCart();
+  console.log("Cart items in SideBar:", cartItems);
+  
 
-      return [...prev, { ...clickedItem, amount: 1 }];
-    });
-    }
-
-  const removeFromCart = (id: number) => {
-    setCartItems((prev) =>
-      prev.reduce((acc, item) => {
-        if (item.id === id) {
-          if (item.amount === 1) return acc;
-          return [...acc, { ...item, amount: item.amount - 1 }];
-        } else {
-          return [...acc, item];
-        }
-      }, [] as CartItemType[])
-    );
-  }
-
-  const  handleChangeSideBar = ()=> {
+  const handleChangeSideBar = () => {
     setSideBar((prevState) => !prevState);
   };
+
+  const toggleCartVisibility = () => {
+    setCartVisible((prevVisible) => !prevVisible);
+  };
+
+  const getTotalItems = useMemo (() => 
+    cartItems ? cartItems.reduce((total, item) => total + item.amount, 0): 0,
+    [cartItems]
+  );
+  console.log("Total Items:", getTotalItems);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  },[]);
+
+  useEffect(() => {
+    console.log("Cart items updated:", cartItems);
+    console.log("Total items updated:", getTotalItems);
+  }, [cartItems, getTotalItems]);
   
+  if (!mounted) return null;
+
   return (
     <Container>
+      {sideBar && <aside onClick={handleChangeSideBar} className="sidebar-overlay" />}
       <Content>
         {!sideBar ? (
           <ClosedSideBar>
             <nav>
-              <button onClick={handleChangeSideBar}>
+              <button onClick={handleChangeSideBar} aria-label="Open sideBar">
                 <ArrowRight />
               </button>
 
@@ -79,35 +86,40 @@ const  SideBar: React.FC =() => {
 
               {/* Links */}
               <ul>
-                <a href="/" title="github">
-                  <img src="/images/icons8-github-24.png" />
+                <a href="https://github.com" title="github">
+                  <img src="/images/icons8-github-24.png" alt="Github"/>
                 </a>
-                <a href="/" title="telegram">
-                  <img src="/images/icons8-telegram-24.png" />
+                <a href="https://telegram.org" title="telegram">
+                  <img src="/images/icons8-telegram-24.png" alt="Telegram" />
                 </a>
-                <a href="/" title="twitter">
-                  <img src="/images/icons8-twitter-24.png" />
+                <a href="https://twitter.com" title="twitter">
+                  <img src="/images/icons8-twitter-24.png" alt="Twitter"/>
                 </a>
-                <a href="/" title="linkedin">
-                  <img src="/images/icons8-linkedin-24.png" />
+                <a href="https://linkedin.com" title="linkedin">
+                  <img src="/images/icons8-linkedin-24.png" alt="Linkedin"/>
                 </a>
               </ul>
             </nav>
             <div>
               {/* Icones  */}
               <ul>
-                <a href="/cart" title="Cart">
-                  <ShoppingCartIcon />
-                </a>
-                <a href="/" title="Notification">
+                <Link href="/cart">
+                  <div style={{ position: "relative" }}>
+                    <ShoppingCartIcon />
+                    {getTotalItems > 0 && 
+                      <CartBadge>{getTotalItems}</CartBadge>
+                    }
+                    </div>
+                  </Link>
+                <button title="Notification">
                   <BellIcon />
-                </a>
-                <a href="/" title="setting">
+                </button>
+                <button title="setting">
                   <SettingsIcon />
-                </a>
-                <a href="/" title="logout">
+                </button>
+                <button title="logout">
                   <LogOutIcon />
-                </a>
+                </button>
               </ul>
 
               <span>
@@ -120,14 +132,14 @@ const  SideBar: React.FC =() => {
             <section>
               <nav>
                 <span>
-                  <button onClick={handleChangeSideBar}>
+                  <button onClick={handleChangeSideBar} aria-label="Close sideBar">
                     <ArrowLeft />
                   </button>
                 </span>
 
                 {/* search input */}
                 <SearchWrapper>
-                  <SearchInput type="text" placeholder="search..." />
+                  <SearchInput type="text" placeholder="search..." aria-label="Search"/>
                   <SearchIcon>
                     <Search />
                   </SearchIcon>
@@ -135,43 +147,48 @@ const  SideBar: React.FC =() => {
 
                 {/* social Icones */}
                 <ul>
-                  <a href="/" title="github">
-                    <img src="../../../../images/icons8-github-24.png" />
-                    <p>github</p>
+                  <a href="https://github.com" title="github">
+                    <img src="/images/icons8-github-24.png" alt="Github"/>
+                    <p>Github</p>
                   </a>
-                  <a href="/" title="telegram">
-                    <img src="../../../../images/icons8-telegram-24.png" />
-                    <p>telegram</p>
+                  <a href="https://telegram.org" title="telegram">
+                    <img src="/images/icons8-telegram-24.png" alt="Telegram"/>
+                    <p>Telegram</p>
                   </a>
-                  <a href="/" title="twitter">
-                    <img src="../../../../images/icons8-twitter-24.png" />
-                    <p>twitter</p>
+                  <a href="https://twitter.com" title="twitter">
+                    <img src="/images/icons8-twitter-24.png" alt="Twitter"/>
+                    <p>Twitter</p>
                   </a>
-                  <a href="/" title="linkedin">
-                    <img src="../../../../images/icons8-linkedin-24.png" />
-                    <p>linkedin</p>
+                  <a href="https://linkedin.com" title="linkedin">
+                    <img src="/images/icons8-linkedin-24.png" alt="Linkedin"/>
+                    <p>linkedIn</p>
                   </a>
                 </ul>
               </nav>
               <div>
                 {/* Icones  */}
                 <ul>
-                  <a href="/cart" title="Cart">
+                <Link href="/cart">
+                  <div style={{ position: "relative" }}>
                     <ShoppingCartIcon />
+                    {getTotalItems > 0 && 
+                      <CartBadge>{getTotalItems}</CartBadge>
+                    }
+                    </div>
                     <p>Cart</p>
-                  </a>
-                  <a href="/">
+                  </Link>
+                  <button title="Notification">
                     <BellIcon />
                     <p>Notification</p>
-                  </a>
-                  <a href="/">
+                  </button>
+                  <button title="Setting">
                     <SettingsIcon />
                     <p>Setting</p>
-                  </a>
-                  <a href="/">
+                  </button>
+                  <button title="Logout">
                     <LogOutIcon />
                     <p> Log Out</p>
-                  </a>
+                  </button>
                 </ul>
                 <span>
                   <UserIcon />
@@ -179,19 +196,20 @@ const  SideBar: React.FC =() => {
                 </span>
               </div>
               <div>
-                <Cart
-                  cartItems= {cartItems}
-                  addToCart= {addToCart}
-                  removeFromCart ={removeFromCart}
-                />
+                {cartVisible && (
+                  <Cart
+                    cartItems={cartItems}
+                    addToCart={addToCart}
+                    removeFromCart={removeFromCart}
+                  />
+                )}
               </div>
             </section>
-            <aside onClick={handleChangeSideBar} />
           </OpenSideBar>
         )}
       </Content>
     </Container>
   );
-}
+};
 
 export default SideBar;
