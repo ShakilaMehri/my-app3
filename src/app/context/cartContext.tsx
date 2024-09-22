@@ -33,7 +33,7 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedCartItems = localStorage.getItem("cart");
-      console.log("Loaded cart items from localStorage:", storedCartItems); // Check here
+      console.log("Loaded cart items from localStorage:", storedCartItems); 
       setCartItems(storedCartItems ? JSON.parse(storedCartItems) : []);
     }
   }, []);
