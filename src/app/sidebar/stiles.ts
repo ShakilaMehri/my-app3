@@ -1,4 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled, {keyframes} from "styled-components";
+
 
 const appearFromRight = keyframes`
   from {
@@ -39,28 +40,28 @@ export const SearchInput = styled.input`
 
   ::placeholder {
     color: #888;
-	padding-left: 5px;
+    padding-left: 5px;
   }
 `;
 
 export const SearchIcon = styled.div`
-	position: absolute;
-	top: 15%;
-	right: 1px;
-	transform: translateY(-50%);
-	color: #888;
-	cursor: pointer;
+  position: absolute;
+  top: 15%;
+  right: 1px;
+  transform: translateY(-50%);
+  color: #888;
+  cursor: pointer;
 
-	&:hover {
-        svg {
-          path {
-            color: var(--third-color);
-          }
-        }
-	
+  &:hover {
+    svg {
+      path {
+        color: var(--third-color);
+      }
+    }
+  }
 `;
 
-export const CartBadge = styled.div`
+export const CartBadge = styled.span`
   position: absolute;
   top: 5px;
   right: 7px;
@@ -114,7 +115,7 @@ export const ClosedSideBar = styled.header`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content; center;
+    justify-content: center;
     }
 
     nav ul li {
@@ -275,8 +276,7 @@ export const OpenSideBar = styled.header`
       align-items: center;
       flex-direction: column;
       width: 100%;
-	  margin-top: 35px;
-
+      margin-top: 35px;
 
       > span {
         width: 100%;
@@ -304,7 +304,6 @@ export const OpenSideBar = styled.header`
 
       div {
         margin-top: 16px;
-
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -373,10 +372,10 @@ export const OpenSideBar = styled.header`
           gap: 16px;
           transition: background 0.3s;
           &:hover {
-          background: var(--shadow-black-color);
-          svg path {
-          color: var(--third-color);
-          }
+            background: var(--shadow-black-color);
+            svg path {
+              color: var(--third-color);
+            }
           }
           svg {
             width: 20px;

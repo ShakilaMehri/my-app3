@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React, { useState, useMemo, useEffect } from "react";
 import {
@@ -9,7 +9,6 @@ import {
   SearchInput,
   SearchWrapper,
   SearchIcon,
-  CartBadge,
 } from "../sidebar/stiles";
 import {
   BellIcon,
@@ -19,19 +18,21 @@ import {
   LogOutIcon,
   UserIcon,
   Search,
-  ShoppingCartIcon,
+  ShoppingCartIcon
 } from "lucide-react";
 
 import { useCart } from "../context/cartContext";
 import Cart from "../cart/cart";
-import { CartItemType } from "../shop/shop";
 import Link from "next/link";
+import { CartItemType } from "../shop/shop";
 
-interface SideBarProps {
-  cartItems?: CartItemType[];
+interface SidebarProps {
+  cartItems: CartItemType[];
+  addToCart: (item: CartItemType) => void;
+  removeFromCart: (id: number) => void;
 }
 
-const SideBar: React.FC<SideBarProps> = () => {
+const SideBar: React.FC<SidebarProps> = () => {
   const [sideBar, setSideBar] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
 
@@ -58,11 +59,6 @@ const SideBar: React.FC<SideBarProps> = () => {
   useEffect(() => {
     setMounted(true);
   },[]);
-
-  useEffect(() => {
-    console.log("Cart items updated:", cartItems);
-    console.log("Total items updated:", getTotalItems);
-  }, [cartItems, getTotalItems]);
 
   if (!mounted) return null;
 
@@ -103,14 +99,16 @@ const SideBar: React.FC<SideBarProps> = () => {
             <div>
               {/* Icones  */}
               <ul>
+                <a>
                 <Link href="/cart">
                   <div>
                     <ShoppingCartIcon />
                     {getTotalItems > 0 && 
-                      <CartBadge>{getTotalItems}</CartBadge>
+                      <span className="cart-badge">{getTotalItems}</span>
                     }
                     </div>
                   </Link>
+                  </a>
                 <button title="Notification">
                   <BellIcon />
                 </button>
@@ -172,7 +170,7 @@ const SideBar: React.FC<SideBarProps> = () => {
                   <div>
                     <ShoppingCartIcon />
                     {getTotalItems > 0 && 
-                      <CartBadge>{getTotalItems}</CartBadge>
+                      <span className="cart-badge">{getTotalItems}</span>
                     }
                     </div>
                     <p>Cart</p>
@@ -209,7 +207,7 @@ const SideBar: React.FC<SideBarProps> = () => {
         )}
       </Content>
     </Container>
-  );
-};
+  )
+}
 
 export default SideBar;
