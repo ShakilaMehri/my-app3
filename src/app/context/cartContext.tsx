@@ -1,4 +1,5 @@
 "use client";
+
 import React, {
   createContext,
   useContext,
@@ -14,7 +15,11 @@ interface CartContextType {
   removeFromCart: (id: number) => void;
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+const CartContext = createContext<CartContextType>({
+  cartItems: [],
+  addToCart: () =>{},
+  removeFromCart:() => {},
+});
 
 const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItemType[]>(() => {
@@ -32,9 +37,7 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedCartItems = localStorage.getItem("cart");
-      console.log("Loaded cart items from localStorage:", storedCartItems); 
-      setCartItems(storedCartItems ? JSON.parse(storedCartItems) : []);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
     }
   }, [cartItems]);
 
@@ -63,8 +66,6 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       }, [] as CartItemType[])
     );
   };
-
-  if (!cartItems) return null;
 
   return (
     <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
