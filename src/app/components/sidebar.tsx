@@ -26,13 +26,13 @@ import Cart from "../cart/cart";
 import Link from "next/link";
 import { CartItemType } from "../shop/shop";
 
-interface SidebarProps {
-  cartItems: CartItemType[];
-  addToCart: (item: CartItemType) => void;
-  removeFromCart: (id: number) => void;
-}
+// interface SidebarProps {
+//   cartItems: CartItemType[];
+//   addToCart: (item: CartItemType) => void;
+//   removeFromCart: (id: number) => void;
+// }
 
-const SideBar: React.FC<SidebarProps> = () => {
+const SideBar = () => {
   const [sideBar, setSideBar] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
 
@@ -49,18 +49,9 @@ const SideBar: React.FC<SidebarProps> = () => {
   };
 
   const getTotalItems = useMemo (() => 
-    cartItems ? cartItems.reduce((total, item) => total + item.amount, 0): 0,
-    [cartItems]
-  );
+    cartItems.reduce((total, item) => total + item.amount, 0),
+    [cartItems]);
   console.log("Total Items:", getTotalItems);
-
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  },[]);
-
-  if (!mounted) return null;
 
   return (
     <Container>
@@ -99,16 +90,13 @@ const SideBar: React.FC<SidebarProps> = () => {
             <div>
               {/* Icones  */}
               <ul>
-                <a>
                 <Link href="/cart">
                   <div>
                     <ShoppingCartIcon />
                     {getTotalItems > 0 && 
-                      <span className="cart-badge">{getTotalItems}</span>
-                    }
+                      <span className="cart-badge">{getTotalItems}</span>}
                     </div>
                   </Link>
-                  </a>
                 <button title="Notification">
                   <BellIcon />
                 </button>
@@ -170,8 +158,7 @@ const SideBar: React.FC<SidebarProps> = () => {
                   <div>
                     <ShoppingCartIcon />
                     {getTotalItems > 0 && 
-                      <span className="cart-badge">{getTotalItems}</span>
-                    }
+                      <span className="cart-badge">{getTotalItems}</span>}
                     </div>
                     <p>Cart</p>
                   </Link>
