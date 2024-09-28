@@ -61,21 +61,28 @@ export const SearchIcon = styled.div`
   }
 `;
 
-export const CartBadge = styled.span`
-  position: absolute;
-  top: 5px;
-  right: 7px;
-  background-color: #777e5c;
-  color: white;
-  border-radius: 50%;
-  padding: 1px 2px;
-  font-size: 10px;
-  max-width: 20px;
-  height: 20px;
+export const CartIconWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 1000;
+  
+  svg {
+    width: 24px;  
+    height: 24px;
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #777e5c;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    width: auto;
+    height: auto;
+  }
 `;
 
 export const ClosedSideBar = styled.header`
@@ -400,5 +407,12 @@ export const OpenSideBar = styled.header`
   aside {
     width: 100%;
     height: 100%;
+  }
+    @media (max-width: 768px) {
+    max-width: 200px; /* Adjust width for smaller screens */
+  }
+
+  @media (max-width: 480px) {
+    max-width: 160px; /* Adjust width for very small screens */
   }
 `;
