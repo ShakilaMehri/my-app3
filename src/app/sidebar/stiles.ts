@@ -246,16 +246,23 @@ export const ClosedSideBar = styled.header`
 
 export const OpenSideBar = styled.header`
   height: 100%;
-  width: 100%;
-
+  width: 250px;
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 900;
+  z-index: 1000;
+  padding: 1rem;
   background: var(--shadow-black-color);
-
   display: flex;
   align-items: center;
+
+      @media (max-width: 768px) {
+    max-width: 200px; 
+  }
+
+  @media (max-width: 480px) {
+    max-width: 160px;
+  }
 
   svg {
     color: #f9f9f9;
@@ -407,12 +414,5 @@ export const OpenSideBar = styled.header`
   aside {
     width: 100%;
     height: 100%;
-  }
-    @media (max-width: 768px) {
-    max-width: 200px; /* Adjust width for smaller screens */
-  }
-
-  @media (max-width: 480px) {
-    max-width: 160px; /* Adjust width for very small screens */
   }
 `;
