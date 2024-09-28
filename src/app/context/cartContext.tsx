@@ -37,23 +37,37 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("cart", JSON.stringify(cartItems));
+      const storedCartItems = localStorage.getItem("cart");
+      console.log("Stored cart items on mount:", storedCartItems);
+      try {
+        setCartItems(storedCartItems ? JSON.parse(storedCartItems) : []);
+      } catch (error) {
+        console.log("Error parsing stored cart items:", error);
+        setCartItems([]);
+      }
     }
-  }, [cartItems]);
+  }, []);
 
   const addToCart = (item: CartItemType) => {
+    console.log("Adding to cart:", item);
     setCartItems((prev) => {
       const isItemInCart = prev.find((cartItem) => cartItem.id === item.id);
-      if (isItemInCart) {
-        return prev.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, amount: cartItem.amount + 1 }
-            : cartItem
-        );
-      }
-      return [...prev, { ...item, amount: 1 }];
+      const updateCart = isItemInCart 
+      ? prev.map((cartItem) => 
+        cartItem.id === item.id
+      ? {...cartItem, amount: cartItem.amount + 1}
+      : cartItem
+      )
+      : [...prev, {...item, amount: 1}];
+
+      localStorage.setItem("cart", JSON.stringify(updateCart));
+      return updateCart;
     });
   };
+
+  useEffect(() => {
+    console.log("cart Items have been updated:", cartItems);    
+  }, [cartItems]);
 
   const removeFromCart = (id: number) => {
     setCartItems((prev) =>
