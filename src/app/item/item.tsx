@@ -2,15 +2,16 @@
 import React from "react";
 import { CartItemType } from "../shop/shop";
 import styles from "./item.module.css";
+import { useCart } from "../context/cartContext";
 
 type Props = {
   item: CartItemType;
   cartItems?: CartItemType[];
-  handleAddToCart: (clickedItem: CartItemType) => void;
-  handleRemoveFromCart: (id: number) => void;
 };
 
-const Item: React.FC<Props> = ({ item, cartItems, handleAddToCart, handleRemoveFromCart }) => {
+const Item: React.FC<Props> = ({ item, cartItems }) => {
+  const {addToCart, removeFromCart} = useCart();
+
   const isItemInCart = cartItems?.find (cartItem => cartItem.id === item.id) ?? null;
   const totalPrice = isItemInCart ? isItemInCart.amount * item.price : item.price;
 
@@ -23,12 +24,12 @@ const Item: React.FC<Props> = ({ item, cartItems, handleAddToCart, handleRemoveF
 
         {isItemInCart ? (
           <div className={styles.cartControls}>
-            <button onClick={() => handleRemoveFromCart(item.id)}>-</button>
+            <button onClick={() => removeFromCart(item.id)}>-</button>
             <p>{isItemInCart.amount}</p>
-            <button onClick={() => handleAddToCart(item)}>+</button>
+            <button onClick={() => addToCart(item)}>+</button>
           </div>
         ) : (
-          <button onClick={() => handleAddToCart(item)}>Add to cart</button>
+          <button onClick={() => addToCart(item)}>Add to cart</button>
         )}
       </div>
     </div>
