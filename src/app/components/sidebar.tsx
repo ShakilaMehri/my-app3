@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useMemo, useEffect } from "react";
 import {
@@ -9,6 +9,7 @@ import {
   SearchInput,
   SearchWrapper,
   SearchIcon,
+  CartIconWrapper,
 } from "../sidebar/stiles";
 import {
   BellIcon,
@@ -18,7 +19,7 @@ import {
   LogOutIcon,
   UserIcon,
   Search,
-  ShoppingCartIcon
+  ShoppingCartIcon,
 } from "lucide-react";
 
 import { useCart } from "../context/cartContext";
@@ -38,7 +39,6 @@ const SideBar = () => {
 
   const { cartItems, addToCart, removeFromCart } = useCart();
   console.log("Cart items in SideBar:", cartItems);
-  
 
   const handleChangeSideBar = () => {
     setSideBar((prevState) => !prevState);
@@ -48,14 +48,17 @@ const SideBar = () => {
     setCartVisible((prevVisible) => !prevVisible);
   };
 
-  const getTotalItems = useMemo (() => 
-    cartItems.reduce((total, item) => total + item.amount, 0),
-    [cartItems]);
+  const getTotalItems = useMemo(
+    () => cartItems.reduce((total, item) => total + item.amount, 0),
+    [cartItems]
+  );
   console.log("Total Items:", getTotalItems);
 
   return (
     <Container>
-      {sideBar && <aside onClick={handleChangeSideBar} className="sidebar-overlay" />}
+      {sideBar && (
+        <aside onClick={handleChangeSideBar} className="sidebar-overlay" />
+      )}
       <Content>
         {!sideBar ? (
           <ClosedSideBar>
@@ -74,16 +77,16 @@ const SideBar = () => {
               {/* Links */}
               <ul>
                 <a href="https://github.com" title="github">
-                  <img src="/images/icons8-github-24.png" alt="Github"/>
+                  <img src="/images/icons8-github-24.png" alt="Github" />
                 </a>
                 <a href="https://telegram.org" title="telegram">
                   <img src="/images/icons8-telegram-24.png" alt="Telegram" />
                 </a>
                 <a href="https://twitter.com" title="twitter">
-                  <img src="/images/icons8-twitter-24.png" alt="Twitter"/>
+                  <img src="/images/icons8-twitter-24.png" alt="Twitter" />
                 </a>
                 <a href="https://linkedin.com" title="linkedin">
-                  <img src="/images/icons8-linkedin-24.png" alt="Linkedin"/>
+                  <img src="/images/icons8-linkedin-24.png" alt="Linkedin" />
                 </a>
               </ul>
             </nav>
@@ -91,12 +94,13 @@ const SideBar = () => {
               {/* Icones  */}
               <ul>
                 <Link href="/cart">
-                  <div>
+                  <CartIconWrapper>
                     <ShoppingCartIcon />
-                    {getTotalItems > 0 && 
-                      <span className="cart-badge">{getTotalItems}</span>}
-                    </div>
-                  </Link>
+                    {getTotalItems > 0 && (
+                      <span className="cart-badge">{getTotalItems}</span>
+                    )}
+                  </CartIconWrapper>
+                </Link>
                 <button title="Notification">
                   <BellIcon />
                 </button>
@@ -118,14 +122,21 @@ const SideBar = () => {
             <section>
               <nav>
                 <span>
-                  <button onClick={handleChangeSideBar} aria-label="Close sideBar">
+                  <button
+                    onClick={handleChangeSideBar}
+                    aria-label="Close sideBar"
+                  >
                     <ArrowLeft />
                   </button>
                 </span>
 
                 {/* search input */}
                 <SearchWrapper>
-                  <SearchInput type="text" placeholder="search..." aria-label="Search"/>
+                  <SearchInput
+                    type="text"
+                    placeholder="search..."
+                    aria-label="Search"
+                  />
                   <SearchIcon>
                     <Search />
                   </SearchIcon>
@@ -134,19 +145,19 @@ const SideBar = () => {
                 {/* social Icones */}
                 <ul>
                   <a href="https://github.com" title="github">
-                    <img src="/images/icons8-github-24.png" alt="Github"/>
+                    <img src="/images/icons8-github-24.png" alt="Github" />
                     <p>Github</p>
                   </a>
                   <a href="https://telegram.org" title="telegram">
-                    <img src="/images/icons8-telegram-24.png" alt="Telegram"/>
+                    <img src="/images/icons8-telegram-24.png" alt="Telegram" />
                     <p>Telegram</p>
                   </a>
                   <a href="https://twitter.com" title="twitter">
-                    <img src="/images/icons8-twitter-24.png" alt="Twitter"/>
+                    <img src="/images/icons8-twitter-24.png" alt="Twitter" />
                     <p>Twitter</p>
                   </a>
                   <a href="https://linkedin.com" title="linkedin">
-                    <img src="/images/icons8-linkedin-24.png" alt="Linkedin"/>
+                    <img src="/images/icons8-linkedin-24.png" alt="Linkedin" />
                     <p>linkedIn</p>
                   </a>
                 </ul>
@@ -154,12 +165,13 @@ const SideBar = () => {
               <div>
                 {/* Icones  */}
                 <ul>
-                <Link href="/cart">
-                  <div>
-                    <ShoppingCartIcon />
-                    {getTotalItems > 0 && 
-                      <span className="cart-badge">{getTotalItems}</span>}
-                    </div>
+                  <Link href="/cart">
+                    <CartIconWrapper>
+                      <ShoppingCartIcon />
+                      {getTotalItems > 0 && (
+                        <span className="cart-badge">{getTotalItems}</span>
+                      )}
+                    </CartIconWrapper>
                     <p>Cart</p>
                   </Link>
                   <button title="Notification">
@@ -194,7 +206,7 @@ const SideBar = () => {
         )}
       </Content>
     </Container>
-  )
-}
+  );
+};
 
 export default SideBar;
