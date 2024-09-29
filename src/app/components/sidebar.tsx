@@ -29,9 +29,14 @@ import Link from "next/link";
 const SideBar = () => {
   const [sideBar, setSideBar] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const { cartItems, addToCart, removeFromCart } = useCart();
   console.log("Cart items in SideBar:", cartItems);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleChangeSideBar = () => {
     setSideBar((prevState) => !prevState);
@@ -45,7 +50,7 @@ const SideBar = () => {
     () => cartItems.reduce((total, item) => total + item.amount, 0),
     [cartItems]
   );
-  console.log("Total Items:", getTotalItems);
+  if (!isMounted) return null;
 
   return (
     <Container>
@@ -87,14 +92,14 @@ const SideBar = () => {
               {/* Icones  */}
               <ul>
                 <button onClick={toggleCartVisibility} title="Open Cart">
-                <Link href="/cart">
-                  <CartIconWrapper>
-                    <ShoppingCartIcon />
-                    {getTotalItems > 0 && (
-                      <span className="cart-badge">{getTotalItems}</span>
-                    )}
-                  </CartIconWrapper>
-                </Link>
+                  <Link href="/cart">
+                    <CartIconWrapper>
+                      <ShoppingCartIcon />
+                      {getTotalItems > 0 && (
+                        <span className="cart-badge">{getTotalItems}</span>
+                      )}
+                    </CartIconWrapper>
+                  </Link>
                 </button>
                 <button title="Notification">
                   <BellIcon />
@@ -161,16 +166,16 @@ const SideBar = () => {
                 {/* Icones  */}
                 <ul>
                   <button onClick={toggleCartVisibility} title="Open Cart">
-                  <Link href="/cart">
-                    <CartIconWrapper>
-                      <ShoppingCartIcon />
-                      {getTotalItems > 0 && (
-                        <span className="cart-badge">{getTotalItems}</span>
-                      )}
-                    </CartIconWrapper>
+                    <Link href="/cart">
+                      <CartIconWrapper>
+                        <ShoppingCartIcon />
+                        {getTotalItems > 0 && (
+                          <span className="cart-badge">{getTotalItems}</span>
+                        )}
+                      </CartIconWrapper>
                     </Link>
                     <p>Cart</p>
-                    </button>
+                  </button>
                   <button title="Notification">
                     <BellIcon />
                     <p>Notification</p>
