@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import React from 'react';
-import { useCart } from '../context/cartContext';
+import React from "react";
+import { useCart } from "../context/cartContext";
 import styles from "../styles/checkout.module.css";
 
 const CheckOut: React.FC = () => {
-  const {cartItems} = useCart();
+  const { cartItems } = useCart();
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.amount * item.price,
@@ -13,9 +13,9 @@ const CheckOut: React.FC = () => {
   );
   return (
     <div className={styles.checkoutContainer}>
-        <h1 className={styles.checkoutHeader}>CheckOut</h1>
-        {cartItems.length > 0 ? (
-          <>
+      <h1 className={styles.checkoutHeader}>CheckOut</h1>
+      {cartItems.length > 0 ? (
+        <>
           <p>Your order has been placed!</p>
           <div className={styles.orderSummary}>
             <h2>Order Summary:</h2>
@@ -23,7 +23,9 @@ const CheckOut: React.FC = () => {
               <div key={item.id} className={styles.orderItem}>
                 <img src={item.imgUrl} alt={item.name} />
                 <div className={styles.itemDetails}>
-                <p>{item.name} x {item.amount}</p>
+                  <p>
+                    {item.name} x {item.amount}
+                  </p>
                 </div>
                 <p>${(item.amount * item.price).toFixed(2)}</p>
               </div>
@@ -32,10 +34,10 @@ const CheckOut: React.FC = () => {
           <div className={styles.totalPrice}>
             Total: ${totalPrice.toFixed(2)}
           </div>
-          </>
-        ) : (
-          <p className={styles.emptyCartMessage}>Your cart is empty!</p>
-        )}
+        </>
+      ) : (
+        <p className={styles.emptyCartMessage}>Your cart is empty!</p>
+      )}
     </div>
   );
 };
