@@ -24,7 +24,7 @@ const CartContext = createContext<CartContextType>({
 const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItemType[]>(() => {
     if (typeof window !== "undefined") {
-      const storedCartItems = localStorage.getItem("cart");
+      const storedCartItems = localStorage.getItem("cartItems");
       try {
         return storedCartItems ? JSON.parse(storedCartItems) : [];
       } catch (error) {
@@ -37,16 +37,9 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedCartItems = localStorage.getItem("cart");
-      console.log("Stored cart items on mount:", storedCartItems);
-      try {
-        setCartItems(storedCartItems ? JSON.parse(storedCartItems) : []);
-      } catch (error) {
-        console.log("Error parsing stored cart items:", error);
-        setCartItems([]);
-      }
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }
-  }, []);
+  }, [cartItems]);
 
   const addToCart = (item: CartItemType) => {
     console.log("Adding to cart:", item);
