@@ -25,13 +25,6 @@ import {
 import { useCart } from "../context/cartContext";
 import Cart from "../cart/cart";
 import Link from "next/link";
-import { CartItemType } from "../shop/shop";
-
-// interface SidebarProps {
-//   cartItems: CartItemType[];
-//   addToCart: (item: CartItemType) => void;
-//   removeFromCart: (id: number) => void;
-// }
 
 const SideBar = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -93,6 +86,7 @@ const SideBar = () => {
             <div>
               {/* Icones  */}
               <ul>
+                <button onClick={toggleCartVisibility} title="Open Cart">
                 <Link href="/cart">
                   <CartIconWrapper>
                     <ShoppingCartIcon />
@@ -101,6 +95,7 @@ const SideBar = () => {
                     )}
                   </CartIconWrapper>
                 </Link>
+                </button>
                 <button title="Notification">
                   <BellIcon />
                 </button>
@@ -165,6 +160,7 @@ const SideBar = () => {
               <div>
                 {/* Icones  */}
                 <ul>
+                  <button onClick={toggleCartVisibility} title="Open Cart">
                   <Link href="/cart">
                     <CartIconWrapper>
                       <ShoppingCartIcon />
@@ -172,8 +168,9 @@ const SideBar = () => {
                         <span className="cart-badge">{getTotalItems}</span>
                       )}
                     </CartIconWrapper>
+                    </Link>
                     <p>Cart</p>
-                  </Link>
+                    </button>
                   <button title="Notification">
                     <BellIcon />
                     <p>Notification</p>

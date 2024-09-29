@@ -28,13 +28,13 @@ export const SearchWrapper = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  width: 100%;
-  padding: 10px 40px 10px 25px;
+  width: calc(100% - 40%);
+  padding: 8px;
   border-radius: 4px;
-  border: none;
+  border: 1px solid #ccc;
   outline: none;
   background-color: #f0f0f0;
-  color: #333;
+  color: #000;
   font-size: 14px;
   cursor: pointer;
 
@@ -251,10 +251,9 @@ export const OpenSideBar = styled.header`
   left: 0;
   top: 0;
   z-index: 1000;
-  padding: 1rem;
-  background: var(--shadow-black-color);
   display: flex;
   align-items: center;
+  overflow: hidden;
 
       @media (max-width: 768px) {
     max-width: 200px; 
