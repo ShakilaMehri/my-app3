@@ -26,7 +26,7 @@ const Item: React.FC<Props> = ({ item, cartItems }) => {
           <div className={styles.cartControls}>
             <button onClick={() => removeFromCart(item.id)}>-</button>
             <p>{isItemInCart.amount}</p>
-            <button onClick={() => addToCart(item)}>+</button>
+            <button onClick={() => addToCart(item)} aria-label="Add item to cart">+</button>
           </div>
         ) : (
           <button onClick={() => addToCart(item)}>Add to cart</button>
