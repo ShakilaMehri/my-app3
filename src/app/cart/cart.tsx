@@ -27,7 +27,6 @@ const Cart: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>Shopping Cart</h2>
 
       <SideBar/>
       <GlobalStyle/>
@@ -55,7 +54,8 @@ const Cart: React.FC = () => {
           </div>
         </>
       ) : (
-        <div className={styles.emptyCartMessage}>No items in cart</div>
+        <div className={styles.emptyCartContainer}>
+        </div>
       )}
     </div>
   );

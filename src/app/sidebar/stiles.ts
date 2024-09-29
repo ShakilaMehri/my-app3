@@ -36,7 +36,6 @@ export const SearchInput = styled.input`
   background-color: #f0f0f0;
   color: #000;
   font-size: 14px;
-  cursor: pointer;
 
   ::placeholder {
     color: #888;
@@ -50,7 +49,6 @@ export const SearchIcon = styled.div`
   right: 1px;
   transform: translateY(-50%);
   color: #888;
-  cursor: pointer;
 
   &:hover {
     svg {

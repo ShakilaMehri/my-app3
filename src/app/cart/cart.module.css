@@ -21,7 +21,14 @@
   color: #333;
 }
 
-.checkoutLInkButton {
+.checkoutButtonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.checkoutLinkButton {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #4caf50;
@@ -34,13 +41,30 @@
 }
 
 
-.checkoutLInkButton:hover {
+.checkoutLinkButton:hover {
   background-color: #45a049;
   }
 
-
-.emptyCartMessage {
-  font-size: 18px;
-  color: #666;
+.emptyCartContainer {
+  position: relative;
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/images/Empty cart.jfif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.emptyCartImg {
+  position: absolute;
+  font-size: 32px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 20px;
+  border-radius: 8px;
+}
+
+
 
