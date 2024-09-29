@@ -2,7 +2,8 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import CartItem from "../cartItem/cartItem";
-import { CartItemType } from "../shop/shop";
+import SideBar from "../components/sidebar";
+import { GlobalStyle } from "../sidebar/sidebar";
 import Link from "next/link";
 import { useCart } from "../context/cartContext";
 import styles from "./cart.module.css";
@@ -27,6 +28,9 @@ const Cart: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Shopping Cart</h2>
+
+      <SideBar/>
+      <GlobalStyle/>
 
       {cartItems.length > 0 ? (
         <>

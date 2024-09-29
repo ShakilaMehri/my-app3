@@ -7,8 +7,8 @@ import { CartProvider} from "../context/cartContext";
 const Page = () => {
   return (
     <CartProvider>
-      <SideBar />
-      <GlobalStyle />
+      {/* <SideBar />
+      <GlobalStyle /> */}
       <Cart/>
     </CartProvider>
   );
