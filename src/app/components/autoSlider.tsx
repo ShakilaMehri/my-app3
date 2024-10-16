@@ -1,5 +1,7 @@
 "use client"
 import React, {useState, useEffect} from 'react';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import styles from '../styles/autoSlider.module.css';
 
