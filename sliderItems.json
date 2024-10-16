@@ -1,0 +1,50 @@
+{
+    "sliderItems": [
+      {
+        "id": 1,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts1.jfif"
+      },
+      {
+        "id": 2,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts2.jfif"
+      },
+      {
+        "id": 3,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts3.jfif"
+      },
+      {
+        "id": 4,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts4.jfif"
+      },
+      {
+        "id": 5,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts5.jfif"
+      },
+      {
+        "id": 6,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts6.jfif"
+      },
+      {
+        "id": 7,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts7.jfif"
+      },
+      {
+        "id": 8,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts8.jfif"
+      },
+      {
+        "id": 9,
+        "topic": "Baby",
+        "imgSrc": "/images/gifts9.jfif"
+      }
+    ]
+  }
+  
