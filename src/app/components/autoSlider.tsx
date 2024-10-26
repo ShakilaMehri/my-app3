@@ -1,11 +1,14 @@
-"use client"
-import React, {useState, useEffect} from 'react';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
-import styles from '../styles/autoSlider.module.css';
+"use client";
+import React, { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Autoplay } from "swiper/modules";
+import styles from "../styles/autoSlider.module.css";
 
-interface SliderItem  {
+interface SliderItem {
   id: number;
   topic: string;
   imgSrc: string;
@@ -17,13 +20,13 @@ const AutoSlider = () => {
   useEffect(() => {
     const fetchSliderData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/sliderItems');
+        const response = await fetch("http://localhost:8000/sliderItems");
         const data = await response.json();
         console.log("Fetched slider data:", data);
 
         setSliderItems(data.sliderItems);
       } catch (error) {
-        console.error('Error fetching slider items:', error);        
+        console.error("Error fetching slider items:", error);
       }
     };
     fetchSliderData();
@@ -33,76 +36,61 @@ const AutoSlider = () => {
     console.log(sliderItems);
   }, [sliderItems]);
 
-  console.log("Auto slider is rendering!", );
-  
-    const settings = {
-        dots: false,
-        infinite: true,
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        speed: 4000,
-        autoplaySpeed: 4000,
-        cssEase: "linear",
-        pauseOnHover: false,
-        arrows: false,
-        responsive:[
-          {
-          breakpoint:1540,
-          settings:{
-            slidesToShow: 5,
-          },
-        },
-        {
-          breakpoint:1024,
-          settings:{
-            slidesToShow: 4,
-          },
-        },
-        {
-          breakpoint:600,
-          settings:{
-            slidesToShow: 3,
-          },
-        },
-        {
-          breakpoint:480,
-          settings:{
-            slidesToShow: 2,
-          },
-        },
-      ],
-      };
+  console.log("Auto slider is rendering!");
+
   return (
-    <div className="slider-container">
-      <div>testing AutoSlider</div>
-      <Slider {...settings}>
-    {sliderItems.length > 0 ? (
-      sliderItems.map((item) => (
-        <div key={item.id} className={styles.cardCover}>
-          <div className={styles.card}>
-            <div className={styles.img}>
-              <img src="/images/gifts9.jfif" alt='gifts image'/>
-            </div>
-            <div className={styles.details}>
-              <div>{item.topic}</div>
-              <div>Designer</div>
-              <div className={styles.chips}>
-                <div className={styles.chip}>Animation</div>
-                <div className={styles.chip}>UC</div>
-                <div className={styles.chip}>Visuals</div>
+    <div className={styles.sliderContainer}>
+      <Swiper
+        modules={[Autoplay]}
+        spaceBetween={10}
+        slidesPerView={6}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        speed={4000}
+        breakpoints={{
+          1540: {
+            slidesPerView: 5,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+          600: {
+            slidesPerView: 3,
+          },
+          480: {
+            slidesPerView: 2,
+          },
+        }}
+      >
+        {sliderItems.length > 0 ? (
+          sliderItems.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className={styles.cardCover}>
+                <div className={styles.card}>
+                  <div className={styles.img}>
+                    <img src={item.imgSrc} alt={item.topic}/>
+                  </div>
+                  <div className={styles.details}>
+                    <div>{item.topic}</div>
+                    <div>Designer</div>
+                    <div className={styles.chips}>
+                      <div className={styles.chip}>Animation</div>
+                      <div className={styles.chip}>UC</div>
+                      <div className={styles.chip}>Visuals</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      ))
-    ) : (
-      <p>Loading</p>
-    )}
-      </Slider>
+            </SwiperSlide>
+          ))
+        ) : (
+          <p>Loading</p>
+        )}
+      </Swiper>
     </div>
   );
 };
-
 
 export default AutoSlider;
