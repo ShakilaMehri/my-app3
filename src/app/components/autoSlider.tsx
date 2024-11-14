@@ -74,7 +74,7 @@ const AutoSlider = () => {
                   </div>
                   <div className={styles.details}>
                     <div>{item.topic}</div>
-                    <div>Designer</div>
+                    <div>Shopping</div>
                     <div className={styles.chips}>
                       <div className={styles.chip}>Animation</div>
                       <div className={styles.chip}>UC</div>
