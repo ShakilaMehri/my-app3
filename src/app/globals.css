@@ -7,3 +7,36 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@media (max-width: 768px){
+  .text-small {
+    font-size: 14px;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+  .line {
+    margin: 10px 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .text-medium {
+    font-size: 16px;
+  }
+
+  .show-on-tablet {
+    display: block;
+  }
+}
+
+@media (min-width: 1025px) {
+  .text-large {
+    font-size: 18px;
+  }
+
+  .show-on-desktop {
+    display: block;
+  }
+}
